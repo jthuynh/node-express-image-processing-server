@@ -37,8 +37,6 @@ function fileFilter(request, file, callback) {
 router.post('/upload', upload.single('photo'), (async (request, response) => {
     if (request.fileValidationError) {
         response.status(400).json({error: request.fileValidationError});
-    } else {
-        response.status(201).json({success: true});
     }
 
     try {
@@ -46,6 +44,9 @@ router.post('/upload', upload.single('photo'), (async (request, response) => {
     } catch (error) {
         
     }
+
+    response.status(201).json({success: true});
+
 }))
 
 module.exports = router;
